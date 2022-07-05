@@ -8,10 +8,11 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+int TTT(vector<int> arr, int start, int n);
 
 int main()
 {
-    int arr[] = {1,2,2,3};
+    int arr[] = {1,2,2,3,77,1,66,65,886,67,68,69,74,72,73,71,70,75};
     int n = sizeof(arr)/sizeof(arr[0]); // getting length of the array
 
     for(int i=0; i<n; i++)
@@ -33,34 +34,36 @@ int main()
     }
 
     cout<<"\n\n";
-
-    int c=1;
+    
     int MAX=0;
 
     for(int i=0; i<n; i++)
     {
-        int d=i;
-
-        for(int j=i+1; j<n; j++)
-        {
-            if(vec[i]+1==vec[j])
-            {
-                c++; // finding the longest series of consecutive numbers
-                i++;
-            }
-            else
-            {
-                MAX=max(MAX,c);
-            }
-        }
-        MAX=max(MAX,c);
+        int t = TTT(vec, i, n);
+        MAX=max(MAX,t);
     }
-
     cout<<"MAX= "<<MAX<<endl; // displaying the longest consecutive series of numbers
-
 
     return 0;
 
+}
+
+int TTT(vector<int>vec, int start, int n)
+{
+    int c=1;
+    for(int i=start; i<n; i++)
+    {
+        if(vec[i]+1==vec[i+1])
+        {
+            c++;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return c;
 }
 
 
